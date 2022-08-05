@@ -9,8 +9,6 @@ namespace MeltingChamber.Utility
     {
 		[SerializeField] private bool _randomizeOnStart = true;
 
-		//[GUIColor( "GetRandomColor" )]
-		//[BoxGroup, InfoBox( "", InfoMessageType.None )]
 		[GUIColor( "GetRandomColor" )]
 		[BoxGroup, SerializeField, MinMaxSlider( 0, 1 )] private Vector2 _hueRange = new Vector2( 0, 1 );
 		[GUIColor( "GetRandomColor" )]
