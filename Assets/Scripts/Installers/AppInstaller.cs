@@ -7,7 +7,9 @@ namespace MeltingChamber.Installers
     {
 		public override void InstallBindings()
 		{
-			Container.Bind<Player>().FromMethod( GetFirstPlayer ).AsSingle();
+			Container.Bind<Player>()
+				.FromMethod( GetFirstPlayer )
+				.AsSingle();
 		}
 
 		private Player GetFirstPlayer()
