@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Zenject;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -12,14 +13,20 @@ namespace MeltingChamber.Gameplay.LevelPieces
         [SerializeField] private float _radius = 8;
         [SerializeField] private Vector2 _cellSize = Vector2.one;
 
-		[Space]
-		[SerializeField] private Transform _tilePrefab = default;
+		private PlaceholderFactory<Transform> _tileFactory;
+
+		[Inject]
+		public void Construct( PlaceholderFactory<Transform> tileFactory )
+		{
+			_tileFactory = tileFactory;
+		}
 
 		private void Start()
 		{
 			foreach ( Vector3 gridPos in GetGridPositions() )
 			{
-				Instantiate( _tilePrefab, gridPos, Quaternion.identity, transform );
+				var newTile = _tileFactory.Create();
+				newTile.SetPositionAndRotation( gridPos, Quaternion.identity );
 			}
 		}
 
