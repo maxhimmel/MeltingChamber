@@ -686,6 +686,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1979450423}
+  - component: {fileID: 1979450426}
+  - component: {fileID: 1979450425}
   - component: {fileID: 1979450424}
   m_Layer: 0
   m_Name: Arena
@@ -723,9 +725,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _radius: 8.4
   _cellSize: {x: 1, y: 1}
-  _tilePrefab: {fileID: 2749053439938197674, guid: 6f462e15731426c4893ee5391d5e8d35, type: 3}
   _radiusColor: {r: 1, g: 0, b: 0, a: 1}
   _gridColor: {r: 1, g: 0, b: 0, a: 0.13725491}
+--- !u!114 &1979450425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979450422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b1e505481cb4c44d83914a073300ad1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tilePrefab: {fileID: 2749053439938197674, guid: 6f462e15731426c4893ee5391d5e8d35, type: 3}
+--- !u!114 &1979450426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979450422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08eca9f7688a0a24685b89133b020c8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scriptableObjectInstallers: []
+  _monoInstallers:
+  - {fileID: 1979450425}
+  _installerPrefabs: []
+  _autoRun: 1
+  _kernel: {fileID: 0}
 --- !u!1 &2029754800
 GameObject:
   m_ObjectHideFlags: 0
