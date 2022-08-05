@@ -5,8 +5,11 @@ namespace MeltingChamber.Gameplay.Movement
 {
     public class CharacterMotor : MonoBehaviour
     {
-        [SerializeField] private float _acceleration = 10;
-        [SerializeField] private float _maxSpeed = 10;
+		public float MaxSpeed => _maxSpeed;
+		public float Acceleration => _acceleration;
+
+		[SerializeField] private float _maxSpeed = 10;
+		[SerializeField] private float _acceleration = 10;
 
 		private Rigidbody2D _body;
 
@@ -22,6 +25,16 @@ namespace MeltingChamber.Gameplay.Movement
         public void SetDesiredVelocity( Vector2 direction )
 		{
             _desiredVelocity = direction * _maxSpeed;
+		}
+
+		public void SetMaxSpeed( float maxSpeed )
+		{
+			_maxSpeed = maxSpeed;
+		}
+
+		public void SetAcceleration( float acceleration )
+		{
+			_acceleration = acceleration;
 		}
 
 		private void FixedUpdate()
