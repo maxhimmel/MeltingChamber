@@ -1,9 +1,10 @@
 using Zenject;
 using UnityEngine;
+using MeltingChamber.Gameplay.LevelPieces;
 
-namespace MeltingChamber
+namespace MeltingChamber.Installers
 {
-    public class ArenaBuilderInstaller : MonoInstaller
+    public class ArenaInstaller : MonoInstaller
     {
         [SerializeField] private Transform _tilePrefab;
 
@@ -12,6 +13,10 @@ namespace MeltingChamber
 			Container.BindFactory<Transform, PlaceholderFactory<Transform>>()
 				.FromComponentInNewPrefab( _tilePrefab )
 				.UnderTransform( transform )
+				.AsSingle();
+
+			Container.Bind<ArenaBuilder>()
+				.FromMethod( GetComponentInChildren<ArenaBuilder> )
 				.AsSingle();
 		}
 	}
