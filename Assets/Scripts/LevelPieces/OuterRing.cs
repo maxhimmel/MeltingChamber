@@ -5,12 +5,18 @@ namespace MeltingChamber.Gameplay.LevelPieces
 {
 	public class OuterRing : MonoBehaviour
 	{
+		[Header( "Collision" )]
 		[SerializeField] private int _resolution = 20;
 		[SerializeField] private float _radius = 10;
 
 		private EdgeCollider2D _edgeCollider;
 
 		private void Start()
+		{
+			GenerateCollision();
+		}
+
+		private void GenerateCollision()
 		{
 			Vector2[] colliderPoints = new Vector2[_resolution + 1];
 
