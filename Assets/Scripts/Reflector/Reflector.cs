@@ -4,6 +4,7 @@ namespace MeltingChamber.Gameplay
 {
     public class Reflector : MonoBehaviour
     {
+		[Header( "Collision" )]
 		[SerializeField] private int _resolution = 5;
 		[SerializeField] private float _radiusOffset = 0;
 		[SerializeField] private float _diameter = 2.5f;
@@ -38,6 +39,16 @@ namespace MeltingChamber.Gameplay
 			}
 
 			_edgeCollider.points = points;
+		}
+
+		private void OnEnable()
+		{
+			_edgeCollider.enabled = true;
+		}
+
+		private void OnDisable()
+		{
+			_edgeCollider.enabled = false;
 		}
 
 		private void Awake()
