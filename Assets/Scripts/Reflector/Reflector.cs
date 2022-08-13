@@ -11,17 +11,19 @@ namespace MeltingChamber.Gameplay
 
 		private void OnEnable()
 		{
-			if ( _edgeBuilder != null && _edgeBuilder.Edge != null )
+			if ( _edgeBuilder.IsInitialized )
 			{
 				_edgeBuilder.Edge.enabled = true;
+				_edgeBuilder.Renderer.enabled = true;
 			}
 		}
 
 		private void OnDisable()
 		{
-			if ( _edgeBuilder != null && _edgeBuilder.Edge != null )
+			if ( _edgeBuilder.IsInitialized )
 			{
 				_edgeBuilder.Edge.enabled = false;
+				_edgeBuilder.Renderer.enabled = false;
 			}
 		}
 
