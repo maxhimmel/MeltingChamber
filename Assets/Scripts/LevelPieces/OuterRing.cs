@@ -8,10 +8,6 @@ namespace MeltingChamber.Gameplay.LevelPieces
 	{
 		[SerializeField] private RingConfig _ringConfig = new RingConfig();
 
-		[Header( "Collision" )]
-		[SerializeField] private int _resolution = 20;
-		[SerializeField] private float _radius = 10;
-
 		private EdgeBuilder _edgeBuilder;
 
 		private void Start()
