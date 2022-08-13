@@ -4,6 +4,7 @@ namespace MeltingChamber.Utility.Edge
 {
     public class EdgeBuilder
     {
+		public bool IsInitialized => _edgeCollider != null && _lineRenderer != null;
 		public EdgeCollider2D Edge => _edgeCollider;
 		public LineRenderer Renderer => _lineRenderer;
 
