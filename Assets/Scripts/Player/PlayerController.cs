@@ -7,6 +7,8 @@ namespace MeltingChamber.Gameplay.Player
 {
     public class PlayerController : MonoBehaviour
     {
+		[SerializeField] private float _reflectorMoveSpeed = 5;
+
 		private Rewired.Player _input;
 		private CharacterMotor _motor;
 		private DashController _dashController;
@@ -14,6 +16,7 @@ namespace MeltingChamber.Gameplay.Player
 
 		private Vector2 _directedAimInput = Vector2.up;
 		private Vector2 _directedMoveInput = Vector2.right;
+		private float _initialMoveSpeed;
 
 		[Inject]
 		public void Construct( Rewired.Player input,
@@ -24,9 +27,10 @@ namespace MeltingChamber.Gameplay.Player
 			_input = input;
 			_motor = motor;
 			_dashController = dashController;
-
 			_reflector = reflector;
+
 			reflector.enabled = false;
+			_initialMoveSpeed = _motor.MaxSpeed;
 		}
 
 		private void Update()
@@ -43,10 +47,12 @@ namespace MeltingChamber.Gameplay.Player
 			if ( _input.GetButtonDown( Action.Reflect ) )
 			{
 				_reflector.enabled = true;
+				_motor.SetMaxSpeed( _reflectorMoveSpeed );
 			}
 			else if ( _input.GetButtonUp( Action.Reflect ) )
 			{
 				_reflector.enabled = false;
+				_motor.SetMaxSpeed( _initialMoveSpeed );
 			}
 		}
 
