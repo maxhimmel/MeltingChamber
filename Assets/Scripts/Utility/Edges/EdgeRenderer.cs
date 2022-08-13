@@ -22,6 +22,7 @@ namespace MeltingChamber.Utility.Edge
 				renderPoints[idx] = points[idx];
 			}
 
+			_renderer.positionCount = pointCount;
 			_renderer.SetPositions( renderPoints );
 			return _renderer;
 		}
