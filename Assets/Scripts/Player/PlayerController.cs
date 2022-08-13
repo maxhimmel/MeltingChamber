@@ -42,7 +42,7 @@ namespace MeltingChamber.Gameplay.Player
 		private void HandleReflector()
 		{
 			var aimInput = GetAxisInput( Action.AimHorizontal, Action.AimVertical, ref _directedAimInput );
-			_reflector.transform.rotation = Quaternion.LookRotation( Vector3.forward, aimInput );
+			_reflector.transform.rotation = Quaternion.LookRotation( Vector3.forward, _directedAimInput );
 
 			if ( _input.GetButtonDown( Action.Reflect ) )
 			{
