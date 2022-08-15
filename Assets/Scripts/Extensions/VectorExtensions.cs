@@ -13,5 +13,10 @@ namespace MeltingChamber.Extensions
 		{
             return new Vector2( self.x, self.y );
 		}
+
+        public static float Max( this Vector3 self )
+		{
+            return Mathf.Max( self.x, self.y, self.z );
+        }
     }
 }
