@@ -61,7 +61,9 @@ namespace MeltingChamber.Utility
 				{
 					float remainingDistance = _length - distance;
 					distance += remainingDistance;
-					_trajectoryPositions[pointCount] = origin + trajectoryDir * remainingDistance;
+
+					Vector2 prevPos = _trajectoryPositions[pointCount - 1];
+					_trajectoryPositions[pointCount] = prevPos + trajectoryDir * remainingDistance;
 				}
 
 				++pointCount;
