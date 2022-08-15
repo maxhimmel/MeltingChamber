@@ -46,6 +46,8 @@ namespace MeltingChamber.Gameplay.Player
 
 			if ( _input.GetButtonDown( Action.Reflect ) )
 			{
+				_dashController.Cancel();
+
 				_reflector.enabled = true;
 				_motor.SetMaxSpeed( _reflectorMoveSpeed );
 			}
@@ -64,7 +66,7 @@ namespace MeltingChamber.Gameplay.Player
 			{
 				_motor.SetDesiredVelocity( moveInput );
 
-				if ( _input.GetButtonDown( Action.Dash ) )
+				if ( _input.GetButtonDown( Action.Dash ) && !_reflector.enabled )
 				{
 					_dashController.Dash( _directedMoveInput );
 				}
