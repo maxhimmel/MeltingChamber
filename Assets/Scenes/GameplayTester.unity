@@ -1723,6 +1723,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 403228e5ef29ef6408b444fcd09f6077, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _delay: 0.25
+  _useRandomForce: 1
+  _randomForce: 10
+  _overrideForce: {x: 1, y: 0}
 --- !u!114 &1962464976
 MonoBehaviour:
   m_ObjectHideFlags: 0
