@@ -643,7 +643,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _ringConfig:
-    _resolution: 20
+    _resolution: 15
     _radius: 9.35
     _gizmoColor: {r: 0, g: 1, b: 0, a: 1}
 --- !u!4 &871305344
@@ -1472,8 +1472,8 @@ Rigidbody2D:
   m_Material: {fileID: 6200000, guid: b171fdd53e71a3f4ab593a1acf3f3da6, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!114 &1962464973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1548,6 +1548,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be9041d93bab2c44da3f3ef0922113cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _moveSpeed: 10
 --- !u!1 &1979450422
 GameObject:
   m_ObjectHideFlags: 0
@@ -1686,7 +1687,7 @@ Rigidbody2D:
   m_Material: {fileID: 6200000, guid: 78bd72a134797454d80a5ca0560c4f87, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!4 &2029754802
 Transform:
