@@ -1,3 +1,4 @@
+using MeltingChamber.Framework;
 using MeltingChamber.Gameplay;
 using UnityEngine;
 using Zenject;
@@ -10,6 +11,11 @@ namespace MeltingChamber.Installers
 
 		public override void InstallBindings()
 		{
+			Container.Bind<LevelInitializer>()
+				.FromNewComponentOnNewGameObject()
+				.AsSingle()
+				.NonLazy();
+
 			Container.BindInstance( _cineBrain )
 				.AsSingle();
 
