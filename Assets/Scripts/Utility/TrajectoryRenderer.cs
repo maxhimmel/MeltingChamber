@@ -13,7 +13,7 @@ namespace MeltingChamber.Utility
 		[SerializeField] private LayerMask _collisionLayer = -1;
 
 		private Rigidbody2D _body;
-		private Collider2D _collider;
+		private CircleCollider2D _collider;
 		private LineRenderer _renderer;
 		private Vector3[] _trajectoryPositions;
 
@@ -22,14 +22,13 @@ namespace MeltingChamber.Utility
 			Collider2D collider )
 		{
 			_body = body;
-			_collider = collider;
+			_collider = collider as CircleCollider2D ?? throw new System.InvalidCastException();
 
 			_trajectoryPositions = new Vector3[_maxPoints];
 		}
 
 		private void FixedUpdate()
 		{
-			Vector2 origin = _body.position;
 			Vector2 velocity = _body.velocity;
 			if ( velocity == Vector2.zero )
 			{
@@ -39,31 +38,31 @@ namespace MeltingChamber.Utility
 
 
 			int pointCount = 1;
-			float distance = 0;
-			_trajectoryPositions[0] = origin;
+			float remainingDistance = _length;
+			_trajectoryPositions[0] = _body.position;
 
-			Vector2 startPos = origin;
+			Vector2 startPos = _body.position;
 			Vector2 trajectoryDir = velocity.normalized;
 
-			while ( distance < _length )
+			while ( remainingDistance > 0 )
 			{
-				var hitInfo = Physics2D.Raycast( startPos, trajectoryDir, _length, _collisionLayer );
+				float radius = _collider.radius * _collider.transform.lossyScale.Max();
+				var hitInfo = Physics2D.CircleCast( startPos, radius, trajectoryDir, remainingDistance, _collisionLayer );
 
 				if ( hitInfo.collider != null )
 				{
-					distance += hitInfo.distance;
-					Vector2 collisionOffset = trajectoryDir * _collider.bounds.extents.Max();
-					_trajectoryPositions[pointCount] = hitInfo.point - collisionOffset;
-
+					remainingDistance -= hitInfo.distance;
+					startPos = hitInfo.centroid;
 					trajectoryDir = Vector2.Reflect( trajectoryDir, hitInfo.normal );
+
+					_trajectoryPositions[pointCount] = hitInfo.centroid;
 				}
 				else
 				{
-					float remainingDistance = _length - distance;
-					distance += remainingDistance;
-
 					Vector2 prevPos = _trajectoryPositions[pointCount - 1];
 					_trajectoryPositions[pointCount] = prevPos + trajectoryDir * remainingDistance;
+
+					remainingDistance = 0;
 				}
 
 				++pointCount;
