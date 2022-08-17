@@ -5,10 +5,10 @@ namespace MeltingChamber.Framework
     public class LevelManager
     {
         private LevelLoader _levelLoader;
-		private TransitionController _transitionController;
+		private ITransitionController _transitionController;
 
 		public LevelManager( LevelLoader levelLoader,
-            TransitionController transitionController )
+            ITransitionController transitionController )
 		{
             _levelLoader = levelLoader;
             _transitionController = transitionController;
