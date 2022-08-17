@@ -6,12 +6,14 @@ namespace MeltingChamber.Framework
 {
     public class LevelInitializer : MonoBehaviour
     {
+        public event System.Action InitializationCompleted;
+
         public bool IsInitialized { get; private set; }
 
-        private TransitionController _transitionController;
+        private ITransitionController _transitionController;
 
         [Inject]
-		public void Construct( TransitionController transitionController )
+		public void Construct( ITransitionController transitionController )
 		{
             _transitionController = transitionController;
 		}
@@ -19,7 +21,9 @@ namespace MeltingChamber.Framework
         private async void Start()
 		{
             await _transitionController.Open();
+            
             IsInitialized = true;
+            InitializationCompleted?.Invoke();
         }
     }
 }
