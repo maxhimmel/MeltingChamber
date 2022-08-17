@@ -623,7 +623,7 @@ GameObject:
   - component: {fileID: 871305347}
   - component: {fileID: 871305345}
   - component: {fileID: 871305348}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: OuterRing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -688,7 +688,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 871305342}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2109b8d1403fe14ab98221eafef89e3, type: 3}
   m_Name: 
@@ -1266,7 +1266,7 @@ GameObject:
   - component: {fileID: 1471235711}
   - component: {fileID: 1471235713}
   - component: {fileID: 1471235714}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Reflector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1587,7 +1587,7 @@ MonoBehaviour:
   _length: 8.3
   _collisionLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 128
 --- !u!1 &1952444648
 GameObject:
   m_ObjectHideFlags: 3
@@ -1723,7 +1723,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 403228e5ef29ef6408b444fcd09f6077, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _delay: 0.25
+  _delay: 1.25
   _useRandomForce: 1
   _randomForce: 10
   _overrideForce: {x: 1, y: 0}
@@ -1752,7 +1752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be9041d93bab2c44da3f3ef0922113cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 10
+  _moveSpeed: 2
 --- !u!1 &1979450422
 GameObject:
   m_ObjectHideFlags: 0

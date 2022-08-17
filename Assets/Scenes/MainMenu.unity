@@ -1226,7 +1226,7 @@ GameObject:
   - component: {fileID: 871305347}
   - component: {fileID: 871305345}
   - component: {fileID: 871305348}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: OuterRing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
