@@ -7,8 +7,6 @@ namespace MeltingChamber.Installers
 {
     public class AppInstaller : MonoInstaller
     {
-		[SerializeField] private TransitionData _transitionData = new TransitionData();
-
 		public override void InstallBindings()
 		{
 			Container.Bind<Player>()
@@ -19,9 +17,9 @@ namespace MeltingChamber.Installers
 			Container.Bind<LevelLoader>()
 				.AsSingle();
 
-			Container.Bind<TransitionController>()
-				.AsSingle()
-				.WithArguments( _transitionData );
+			Container.Bind<ITransitionController>()
+				.FromMethod( GetComponentInChildren<ITransitionController> )
+				.AsSingle();
 
 			Container.Bind<LevelManager>()
 				.AsSingle();
