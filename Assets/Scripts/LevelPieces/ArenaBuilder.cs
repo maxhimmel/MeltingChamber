@@ -8,6 +8,7 @@ namespace MeltingChamber.Gameplay.LevelPieces
     public class ArenaBuilder : MonoBehaviour
     {
 		public IEnumerable<Transform> Tiles => _tiles;
+		public int TileCount => _tiles.Count;
 		public float Radius => _radius;
 		public float CellSize => _cellSize;
 
@@ -81,6 +82,11 @@ namespace MeltingChamber.Gameplay.LevelPieces
 			{
 				Destroy( tile.gameObject );
 			}
+		}
+
+		public Transform GetTile( int index )
+		{
+			return _tiles[index];
 		}
 
 #if UNITY_EDITOR
