@@ -6,6 +6,7 @@ namespace MeltingChamber.Gameplay.LevelPieces
     public class SludgeDelivery : MonoBehaviour
     {
         [SerializeField] private float _speed = 5;
+        [SerializeField] private Sludge _sludgePrefab;
 
         private Coroutine _travelRoutine;
 
@@ -34,6 +35,8 @@ namespace MeltingChamber.Gameplay.LevelPieces
         private void OnDelivered()
 		{
             Destroy( gameObject );
+
+            Instantiate( _sludgePrefab, transform.position, Quaternion.identity );
 		}
     }
 }
