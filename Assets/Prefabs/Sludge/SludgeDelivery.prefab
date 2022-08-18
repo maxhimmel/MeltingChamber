@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 821505269181886844}
   - component: {fileID: 821505269181886847}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,7 +150,7 @@ GameObject:
   m_Component:
   - component: {fileID: 821505269993824847}
   - component: {fileID: 821505269993824844}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: SludgeDelivery
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,6 +187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 5
+  _sludgePrefab: {fileID: -4465371838575081637, guid: afd9ff8cda4bde74891bf75f2e2a75e2, type: 3}
 --- !u!1 &821505270189335053
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,7 +198,7 @@ GameObject:
   m_Component:
   - component: {fileID: 821505270189335052}
   - component: {fileID: 821505270189335055}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
