@@ -33,6 +33,16 @@ namespace MeltingChamber.Gameplay.Player
 			_initialMoveSpeed = _motor.MaxSpeed;
 		}
 
+		public bool TakeDamage( Transform dmgSource )
+		{
+			if ( _dashController.IsDashing )
+			{
+				return false;
+			}
+
+			return true;
+		}
+
 		private void Update()
 		{
 			HandleReflector();
