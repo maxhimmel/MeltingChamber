@@ -37,6 +37,12 @@ namespace MeltingChamber.Gameplay.Movement
 			_acceleration = acceleration;
 		}
 
+		public void ClearMovement()
+		{
+			_velocity = Vector2.zero;
+			_desiredVelocity = Vector2.zero;
+		}
+
 		private void FixedUpdate()
 		{
 			_velocity = _body.velocity;
