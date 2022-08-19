@@ -2452,7 +2452,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reflectorMoveSpeed: 3
-  _damageKnockback: 5
 --- !u!114 &2029754804
 MonoBehaviour:
   m_ObjectHideFlags: 0
