@@ -13,6 +13,7 @@ namespace MeltingChamber.Gameplay.Player
 		private CharacterMotor _motor;
 		private DashController _dashController;
 		private Reflector _reflector;
+		private DamageHandler _damageHandler;
 
 		private Vector2 _directedAimInput = Vector2.up;
 		private Vector2 _directedMoveInput = Vector2.right;
@@ -22,12 +23,14 @@ namespace MeltingChamber.Gameplay.Player
 		public void Construct( Rewired.Player input,
 			CharacterMotor motor,
 			DashController dashController,
-			Reflector reflector )
+			Reflector reflector,
+			DamageHandler damageHandler )
 		{
 			_input = input;
 			_motor = motor;
 			_dashController = dashController;
 			_reflector = reflector;
+			_damageHandler = damageHandler;
 
 			reflector.enabled = false;
 			_initialMoveSpeed = _motor.MaxSpeed;
@@ -40,11 +43,20 @@ namespace MeltingChamber.Gameplay.Player
 				return false;
 			}
 
+			_motor.ClearMovement();
+			_damageHandler.TakeDamage( dmgSource );
+			SetReflectorActive( false );
+
 			return true;
 		}
 
 		private void Update()
 		{
+			if ( _damageHandler.IsStunned )
+			{
+				return;
+			}
+
 			HandleReflector();
 			HandleMovement();
 		}
@@ -57,15 +69,20 @@ namespace MeltingChamber.Gameplay.Player
 			if ( _input.GetButtonDown( Action.Reflect ) )
 			{
 				_dashController.Cancel();
-
-				_reflector.enabled = true;
-				_motor.SetMaxSpeed( _reflectorMoveSpeed );
+				SetReflectorActive( true );
 			}
 			else if ( _input.GetButtonUp( Action.Reflect ) )
 			{
-				_reflector.enabled = false;
-				_motor.SetMaxSpeed( _initialMoveSpeed );
+				SetReflectorActive( false );
 			}
+		}
+
+		private void SetReflectorActive( bool isActive )
+		{
+			_reflector.enabled = isActive;
+
+			float moveSpeed = isActive ? _reflectorMoveSpeed : _initialMoveSpeed;
+			_motor.SetMaxSpeed( moveSpeed );
 		}
 
 		private void HandleMovement()
