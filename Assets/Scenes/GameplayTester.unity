@@ -2390,6 +2390,7 @@ GameObject:
   - component: {fileID: 2029754808}
   - component: {fileID: 2029754806}
   - component: {fileID: 2029754807}
+  - component: {fileID: 2029754809}
   - component: {fileID: 2029754801}
   m_Layer: 3
   m_Name: Player
@@ -2451,6 +2452,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reflectorMoveSpeed: 3
+  _damageKnockback: 5
 --- !u!114 &2029754804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2522,6 +2524,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e8c6ed08c16de2428fbc4096ec32778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2029754809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2029754800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cecf7444bb8e8b549b10c6b928ea6902, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _knockbackForce: 15
+  _duration: 0.25
 --- !u!1 &2029864907
 GameObject:
   m_ObjectHideFlags: 0
