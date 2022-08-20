@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
@@ -38,7 +39,17 @@ namespace MeltingChamber.Gameplay.Movement
 			}
 		}
 
-        public void Dash( Vector2 direction )
+        public async Task Dash( Vector2 direction )
+		{
+            StartDash( direction );
+
+            while ( IsDashing )
+			{
+                await Task.Yield();
+			}
+		}
+
+        private void StartDash( Vector2 direction )
 		{
             if ( IsDashing )
 			{
