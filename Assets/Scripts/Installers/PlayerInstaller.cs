@@ -14,6 +14,7 @@ namespace MeltingChamber.Installers
 			Container.Bind<DashController>().FromMethod( GetComponentInChildren<DashController> ).AsSingle();
 			Container.Bind<Reflector>().FromMethod( GetComponentInChildren<Reflector> ).AsSingle();
 			Container.Bind<DamageHandler>().FromMethod( GetComponentInChildren<DamageHandler> ).AsSingle();
+			Container.Bind<SludgeBucket>().FromMethod( GetComponentInChildren<SludgeBucket> ).AsSingle();
 		}
 	}
 }
