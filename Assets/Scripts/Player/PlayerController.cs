@@ -14,6 +14,7 @@ namespace MeltingChamber.Gameplay.Player
 		private DashController _dashController;
 		private Reflector _reflector;
 		private DamageHandler _damageHandler;
+		private SludgeBucket _sludgeBucket;
 
 		private Vector2 _directedAimInput = Vector2.up;
 		private Vector2 _directedMoveInput = Vector2.right;
@@ -24,15 +25,16 @@ namespace MeltingChamber.Gameplay.Player
 			CharacterMotor motor,
 			DashController dashController,
 			Reflector reflector,
-			DamageHandler damageHandler )
+			DamageHandler damageHandler,
+			SludgeBucket sludgeBucket )
 		{
 			_input = input;
 			_motor = motor;
 			_dashController = dashController;
 			_reflector = reflector;
 			_damageHandler = damageHandler;
+			_sludgeBucket = sludgeBucket;
 
-			reflector.enabled = false;
 			_initialMoveSpeed = _motor.MaxSpeed;
 		}
 
@@ -69,6 +71,7 @@ namespace MeltingChamber.Gameplay.Player
 			if ( _input.GetButtonDown( Action.Reflect ) )
 			{
 				_dashController.Cancel();
+				_sludgeBucket.enabled = false;
 				SetReflectorActive( true );
 			}
 			else if ( _input.GetButtonUp( Action.Reflect ) )
@@ -85,7 +88,7 @@ namespace MeltingChamber.Gameplay.Player
 			_motor.SetMaxSpeed( moveSpeed );
 		}
 
-		private void HandleMovement()
+		private async void HandleMovement()
 		{
 			var moveInput = GetAxisInput( Action.MoveHorizontal, Action.MoveVertical, ref _directedMoveInput );
 
@@ -95,7 +98,9 @@ namespace MeltingChamber.Gameplay.Player
 
 				if ( _input.GetButtonDown( Action.Dash ) && !_reflector.enabled )
 				{
-					_dashController.Dash( _directedMoveInput );
+					_sludgeBucket.enabled = true;
+					await _dashController.Dash( _directedMoveInput );
+					_sludgeBucket.enabled = false;
 				}
 			}
 		}
@@ -111,6 +116,12 @@ namespace MeltingChamber.Gameplay.Player
 			}
 
 			return result;
+		}
+
+		private void Start()
+		{
+			_reflector.enabled = false;
+			_sludgeBucket.enabled = false;
 		}
 	}
 }
