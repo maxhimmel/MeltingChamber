@@ -22,12 +22,12 @@ namespace MeltingChamber.Gameplay.LevelPieces
                 yield return null;
 			}
 
-            OnExpiration();
+			CleanUp();
 		}
 
-        private void OnExpiration()
+		public void CleanUp()
 		{
-            Destroy( gameObject );
+			Destroy( gameObject );
 		}
 
 		private void OnTriggerEnter2D( Collider2D collision )
