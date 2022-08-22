@@ -132,6 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 88844098}
+  - component: {fileID: 88844099}
   m_Layer: 0
   m_Name: Tiles
   m_TagString: Untagged
@@ -154,6 +155,23 @@ Transform:
   m_Father: {fileID: 1979450423}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &88844099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88844097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0761c5b874dbca42a370601ffc6fdc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tilePrefabs:
+  - {fileID: 3697460199267750880, guid: c6db819983ec5c846b6bd1f58d3803d8, type: 3}
+  - {fileID: 8473241140564977477, guid: 22c243249dfa5cc4a85579b95b964b12, type: 3}
+  - {fileID: 1176674849464863983, guid: c178aca85102a6644b04bce8a5938a05, type: 3}
+  - {fileID: -5351210523127098579, guid: 33e4ad9adf8dade449ba3629395a5492, type: 3}
 --- !u!1 &175720525
 GameObject:
   m_ObjectHideFlags: 0
@@ -684,7 +702,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 000000005952dfc1cdf8f63c
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -2408,6 +2426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72a5fcc52ebf58044b29aff0bb3a1dd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _tileProvider: {fileID: 88844099}
   _radius: 8.4
   _cellSize: 1
   _radiusColor: {r: 1, g: 0, b: 0, a: 1}
@@ -2424,8 +2443,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b1e505481cb4c44d83914a073300ad1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tilePrefab: {fileID: 2749053439938197674, guid: 6f462e15731426c4893ee5391d5e8d35, type: 3}
-  _tileContainer: {fileID: 88844098}
 --- !u!114 &1979450426
 MonoBehaviour:
   m_ObjectHideFlags: 0
