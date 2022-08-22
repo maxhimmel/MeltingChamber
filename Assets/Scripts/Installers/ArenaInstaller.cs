@@ -6,15 +6,10 @@ namespace MeltingChamber.Installers
 {
     public class ArenaInstaller : MonoInstaller
     {
-        [SerializeField] private Transform _tilePrefab;
-		[SerializeField] private Transform _tileContainer;
-
 		public override void InstallBindings()
 		{
-			Container.BindFactory<Transform, PlaceholderFactory<Transform>>()
-				.FromComponentInNewPrefab( _tilePrefab )
-				.UnderTransform( _tileContainer )
-				.AsSingle();
+			Container.BindFactory<Object, Tile, Tile.Factory>()
+				.FromFactory<PrefabFactory<Tile>>();
 
 			Container.Bind<ArenaBuilder>()
 				.FromMethod( GetComponentInChildren<ArenaBuilder> )

@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using Zenject;
 using MeltingChamber.Extensions;
+using Sirenix.OdinInspector;
 
 namespace MeltingChamber.Gameplay.LevelPieces
 {
@@ -12,14 +13,18 @@ namespace MeltingChamber.Gameplay.LevelPieces
 		public float Radius => _radius;
 		public float CellSize => _cellSize;
 
-        [SerializeField] private float _radius = 8;
-        [SerializeField] private float _cellSize = 1;
+		[SerializeField] private TileProvider _tileProvider;
 
-		private PlaceholderFactory<Transform> _tileFactory;
+		[BoxGroup]
+        [SerializeField] private float _radius = 8;
+		[BoxGroup]
+		[SerializeField] private float _cellSize = 1;
+
+		private Tile.Factory _tileFactory;
 		private List<Transform> _tiles = new List<Transform>();
 
 		[Inject]
-		public void Construct( PlaceholderFactory<Transform> tileFactory )
+		public void Construct( Tile.Factory tileFactory )
 		{
 			_tileFactory = tileFactory;
 		}
@@ -63,12 +68,13 @@ namespace MeltingChamber.Gameplay.LevelPieces
 
 		private Transform CreateTile( Vector3 position )
 		{
-			var newTile = _tileFactory.Create();
-			
-			newTile.SetPositionAndRotation( position, Quaternion.identity );
-			newTile.localScale = Vector3.one * _cellSize;
+			var newTile = _tileFactory.Create( _tileProvider.GetRandomTile() );
 
-			return newTile;
+			newTile.transform.SetParent( _tileProvider.transform );
+			newTile.transform.SetPositionAndRotation( position, Quaternion.identity );
+			newTile.transform.localScale = Vector3.one * _cellSize;
+
+			return newTile.transform;
 		}
 
 		public void AddTile( Transform tile )
