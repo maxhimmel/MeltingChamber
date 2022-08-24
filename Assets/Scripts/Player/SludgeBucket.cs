@@ -20,10 +20,14 @@ namespace MeltingChamber.Gameplay.Player
 			_bucketRenderer = bucketRenderer;
 		}
 
-		public void Deposit()
+		public int Deposit()
 		{
+			int depositAmount = _fillCount;
+
 			_fillCount = 0;
 			_bucketRenderer.Deposit();
+
+			return depositAmount;
 		}
 
 		private void OnTriggerEnter2D( Collider2D collision )
