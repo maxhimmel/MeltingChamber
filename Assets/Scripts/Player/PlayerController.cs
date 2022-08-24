@@ -52,6 +52,11 @@ namespace MeltingChamber.Gameplay.Player
 			return true;
 		}
 
+		public int DepositSludge()
+		{
+			return _sludgeBucket.Deposit();
+		}
+
 		private void Update()
 		{
 			if ( _damageHandler.IsStunned )
