@@ -22,5 +22,7 @@ namespace MeltingChamber.Gameplay
 
 			_body.velocity = reflect.normalized * _moveSpeed;
 		}
+
+		public class Factory : PlaceholderFactory<PongBall> { }
 	}
 }
