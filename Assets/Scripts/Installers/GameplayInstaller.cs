@@ -7,7 +7,8 @@ namespace MeltingChamber.Installers
 {
     public class GameplayInstaller : MonoInstaller
     {
-		[SerializeField] private Cinemachine.CinemachineBrain _cineBrain = default;
+		[SerializeField] private Cinemachine.CinemachineBrain _cineBrain;
+		[SerializeField] private PongBall _pongBallPrefab;
 
 		public override void InstallBindings()
 		{
@@ -21,6 +22,10 @@ namespace MeltingChamber.Installers
 
 			Container.Bind<ICameraResolver>()
 				.To<CineBrainCameraResolver>()
+				.AsSingle();
+
+			Container.BindFactory<PongBall, PongBall.Factory>()
+				.FromComponentInNewPrefab( _pongBallPrefab )
 				.AsSingle();
 		}
 	}

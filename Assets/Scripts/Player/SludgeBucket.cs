@@ -1,26 +1,42 @@
 using MeltingChamber.Gameplay.LevelPieces;
 using UnityEngine;
+using Zenject;
 
 namespace MeltingChamber.Gameplay.Player
 {
     public class SludgeBucket : MonoBehaviour
     {
-		public bool IsFull => throw new System.NotImplementedException();
+		public bool IsFull => _fillCount >= _capacity;
 
+		[SerializeField] private int _capacity = 3;
+
+		private IBucketRenderer _bucketRenderer;
 		private Collider2D _trigger;
+		private int _fillCount;
 
-		private void OnEnable()
+		[Inject]
+		public void Construct( IBucketRenderer bucketRenderer )
 		{
-			_trigger.enabled = true;
+			_bucketRenderer = bucketRenderer;
 		}
 
-		private void OnDisable()
+		public int Deposit()
 		{
-			_trigger.enabled = false;
+			int depositAmount = _fillCount;
+
+			_fillCount = 0;
+			_bucketRenderer.Deposit();
+
+			return depositAmount;
 		}
 
 		private void OnTriggerEnter2D( Collider2D collision )
 		{
+			if ( IsFull )
+			{
+				return;
+			}
+
 			Rigidbody2D body = collision.attachedRigidbody;
 			if ( body == null )
 			{
@@ -31,7 +47,20 @@ namespace MeltingChamber.Gameplay.Player
 			if ( sludge != null )
 			{
 				sludge.CleanUp();
+
+				++_fillCount;
+				_bucketRenderer.Fill( (float)_fillCount / _capacity, _capacity );
 			}
+		}
+
+		private void OnEnable()
+		{
+			_trigger.enabled = true;
+		}
+
+		private void OnDisable()
+		{
+			_trigger.enabled = false;
 		}
 
 		private void Awake()

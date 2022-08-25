@@ -5,9 +5,6 @@ namespace MeltingChamber.Gameplay.LevelPieces
 {
     public class Tile : MonoBehaviour
     {
-        public class Factory : PlaceholderFactory<Object, Tile>
-		{
-
-		}
+        public class Factory : PlaceholderFactory<Object, Tile> { }
 	}
 }

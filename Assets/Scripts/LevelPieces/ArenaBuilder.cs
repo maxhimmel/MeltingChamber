@@ -70,7 +70,7 @@ namespace MeltingChamber.Gameplay.LevelPieces
 		{
 			var newTile = _tileFactory.Create( _tileProvider.GetRandomTile() );
 
-			newTile.transform.SetParent( _tileProvider.transform );
+			newTile.transform.SetParent( _tileProvider.Container );
 			newTile.transform.SetPositionAndRotation( position, Quaternion.identity );
 			newTile.transform.localScale = Vector3.one * _cellSize;
 

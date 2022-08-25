@@ -4,6 +4,8 @@ namespace MeltingChamber.Gameplay.LevelPieces
 {
     public class TileProvider : MonoBehaviour
     {
+        public Transform Container => transform;
+
         [SerializeField] private Tile[] _tilePrefabs;
 
         public Tile GetRandomTile()
