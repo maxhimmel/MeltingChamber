@@ -1,3 +1,4 @@
+using System;
 using MeltingChamber.Utility;
 using UnityEngine;
 using Zenject;
@@ -6,6 +7,8 @@ namespace MeltingChamber.Gameplay.LevelPieces
 {
     public class PongButton : MonoBehaviour
     {
+		public event EventHandler Triggered;
+
 		private IToggler _renderToggler;
 
 		private void OnEnable()
@@ -29,7 +32,7 @@ namespace MeltingChamber.Gameplay.LevelPieces
 			PongBall pongBall = body.GetComponent<PongBall>();
 			if ( pongBall != null )
 			{
-				Debug.Log( "Button hit!", this );
+				Triggered?.Invoke( this, EventArgs.Empty );
 			}
 		}
 
