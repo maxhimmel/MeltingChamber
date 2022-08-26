@@ -879,6 +879,7 @@ GameObject:
   m_Component:
   - component: {fileID: 871305344}
   - component: {fileID: 871305343}
+  - component: {fileID: 871305349}
   - component: {fileID: 871305347}
   - component: {fileID: 871305345}
   - component: {fileID: 871305348}
@@ -1051,6 +1052,23 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 0
   m_Loop: 0
+--- !u!114 &871305349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871305342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb3964e64051b8f4fa62997f23dadd34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buttonCount: 5
+  _rotationOffset: 0
+  _gizmoColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  _gizmoRingRadius: 9.35
+  _gizmoButtonRadius: 0.35
 --- !u!1 &921279227
 GameObject:
   m_ObjectHideFlags: 0
@@ -1261,6 +1279,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cineBrain: {fileID: 519420033}
   _pongBallPrefab: {fileID: 2908948969853110412, guid: 8f324118a08b092458419e22a6adf736, type: 3}
+  _pongButtonPrefab: {fileID: 3222978734234964274, guid: 11827bfcc0e47ff418eb54bbbb49241c, type: 3}
 --- !u!1 &1118636010
 GameObject:
   m_ObjectHideFlags: 0
