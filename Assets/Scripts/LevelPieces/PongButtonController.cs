@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using MeltingChamber.Utility.Edge;
 using UnityEngine;
@@ -11,12 +12,16 @@ namespace MeltingChamber.Gameplay.LevelPieces
 		[SerializeField, Range( 0, 360 )] private float _rotationOffset = 0;
 
 		private PongButton.Factory _buttonFactory;
+		private ArenaDissolver _dissolver;
 		private List<PongButton> _buttons;
 
 		[Inject]
-		public void Construct( PongButton.Factory buttonFactory )
+		public void Construct( PongButton.Factory buttonFactory, 
+			ArenaDissolver dissolver )
 		{
             _buttonFactory = buttonFactory;
+			_dissolver = dissolver;
+
 			_buttons = new List<PongButton>( _buttonCount );
 		}
 
@@ -25,6 +30,8 @@ namespace MeltingChamber.Gameplay.LevelPieces
 			foreach ( Vector3 spawnPos in GetSpawnPositions( config.Radius ) )
 			{
 				var newButton = CreateButton( spawnPos );
+
+				newButton.Triggered += OnButtonTriggered;
 				_buttons.Add( newButton );
 			}
 		}
@@ -37,6 +44,14 @@ namespace MeltingChamber.Gameplay.LevelPieces
 			newButton.transform.position = position;
 
 			return newButton;
+		}
+
+		private void OnButtonTriggered( object sender, EventArgs args )
+		{
+			if ( sender is PongButton button )
+			{
+				_dissolver.ResetCountdown();
+			}
 		}
 
 		private IEnumerable<Vector3> GetSpawnPositions( float radius )
