@@ -6,6 +6,8 @@ namespace MeltingChamber.Gameplay.LevelPieces
 {
     public class ArenaDissolver : MonoBehaviour
     {
+		public float CountdownRatio => _countdown / _rate;
+
         [SerializeField] private float _rate = 10;
         [SerializeField] private float _distanceThreshold = 0.5f;
 
@@ -31,7 +33,7 @@ namespace MeltingChamber.Gameplay.LevelPieces
 
 		private void OnDissolveCountdownExpired()
 		{
-			_countdown = 0;
+			ResetCountdown();
 
 			Transform tile = GetDissolvableTile();
 			if ( tile != null )
@@ -42,6 +44,11 @@ namespace MeltingChamber.Gameplay.LevelPieces
 			{
 				_radius -= _builder.CellSize / 2f;
 			}
+		}
+
+		public void ResetCountdown()
+		{
+			_countdown = 0;
 		}
 
 		private Transform GetDissolvableTile()
