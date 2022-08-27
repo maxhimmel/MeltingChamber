@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 64df6b419e9ccdc4db738eb68db63ee0
+guid: b521d9d589260944c8159b17109b58eb
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,7 +116,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: CharacterRun_0
+      name: CharacterDash_0
       rect:
         serializedVersion: 2
         x: 0
@@ -130,14 +130,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 33c5987738b4d3445a5acf27860c426b
-      internalID: -531094715
+      spriteID: b65cbb0846da29b4ab8ce0f14f719037
+      internalID: -2132656187
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterRun_1
+      name: CharacterDash_1
       rect:
         serializedVersion: 2
         x: 58
@@ -151,14 +151,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 89160d69ac6c31d4ebefaa33be86bab5
-      internalID: 774648591
+      spriteID: 95e6a6c64ee9d8c4ca0a2ec45ddd41e1
+      internalID: 1101611800
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterRun_2
+      name: CharacterDash_2
       rect:
         serializedVersion: 2
         x: 116
@@ -172,14 +172,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b0cc506fd95507448ff3223b3e5d581
-      internalID: 628710341
+      spriteID: eb84e1080a63e3142881d4ef04ec9358
+      internalID: -1116147940
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterRun_3
+      name: CharacterDash_3
       rect:
         serializedVersion: 2
         x: 174
@@ -193,14 +193,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8d64adc5e705bc74bb464e926973dbaa
-      internalID: -769765401
+      spriteID: f16c16ac2d5e9f94dadae0cffdfb9d72
+      internalID: 626371007
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterRun_4
+      name: CharacterDash_4
       rect:
         serializedVersion: 2
         x: 232
@@ -214,14 +214,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ee4736a794646554b8bc0f53fa2fbb31
-      internalID: -110663337
+      spriteID: c04fa35de9fcf4c4897194bce9bf3441
+      internalID: -443824380
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharacterRun_5
+      name: CharacterDash_5
       rect:
         serializedVersion: 2
         x: 290
@@ -235,8 +235,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 241cf633de9e2a24fa50e95aba98f586
-      internalID: 8170175
+      spriteID: 2370a5c41131a3d4ebf5f0603eaa3932
+      internalID: -330275314
       vertices: []
       indices: 
       edges: []
@@ -252,12 +252,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      CharacterRun_3: -769765401
-      CharacterRun_4: -110663337
-      CharacterRun_1: 774648591
-      CharacterRun_0: -531094715
-      CharacterRun_5: 8170175
-      CharacterRun_2: 628710341
+      CharacterDash_5: -330275314
+      CharacterDash_4: -443824380
+      CharacterDash_1: 1101611800
+      CharacterDash_2: -1116147940
+      CharacterDash_3: 626371007
+      CharacterDash_0: -2132656187
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
