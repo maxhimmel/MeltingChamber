@@ -35,7 +35,7 @@ namespace MeltingChamber.Gameplay.LevelPieces
 		{
 			ResetCountdown();
 
-			Transform tile = GetDissolvableTile();
+			Tile tile = GetDissolvableTile();
 			if ( tile != null )
 			{
 				_builder.RemoveTile( tile );
@@ -51,14 +51,14 @@ namespace MeltingChamber.Gameplay.LevelPieces
 			_countdown = 0;
 		}
 
-		private Transform GetDissolvableTile()
+		private Tile GetDissolvableTile()
 		{
-			List<Transform> viableTiles = new List<Transform>();
+			List<Tile> viableTiles = new List<Tile>();
 
 			float distance = _radius - _distanceThreshold;
-			foreach ( Transform tile in _builder.Tiles )
+			foreach ( Tile tile in _builder.Tiles )
 			{
-				float distSqr = (tile.position - _builder.transform.position).sqrMagnitude;
+				float distSqr = (tile.transform.position - _builder.transform.position).sqrMagnitude;
 				if ( distSqr >= distance * distance )
 				{
 					viableTiles.Add( tile );

@@ -58,8 +58,8 @@ namespace MeltingChamber.Gameplay.LevelPieces
 			}
 
 			int randIndex = Random.Range( 0, _arena.TileCount );
-			Transform randTile = _arena.GetTile( randIndex );
-			return randTile.position;
+			Tile randTile = _arena.GetTile( randIndex );
+			return randTile.transform.position;
 		}
 
 		private SludgeDelivery CreateDelivery( Vector2 startPos )

@@ -8,7 +8,7 @@ namespace MeltingChamber.Gameplay.LevelPieces
 {
     public class ArenaBuilder : MonoBehaviour
     {
-		public IEnumerable<Transform> Tiles => _tiles;
+		public IEnumerable<Tile> Tiles => _tiles;
 		public int TileCount => _tiles.Count;
 		public float Radius => _radius;
 		public float CellSize => _cellSize;
@@ -21,7 +21,7 @@ namespace MeltingChamber.Gameplay.LevelPieces
 		[SerializeField] private float _cellSize = 1;
 
 		private Tile.Factory _tileFactory;
-		private List<Transform> _tiles = new List<Transform>();
+		private List<Tile> _tiles = new List<Tile>();
 
 		[Inject]
 		public void Construct( Tile.Factory tileFactory )
@@ -66,7 +66,7 @@ namespace MeltingChamber.Gameplay.LevelPieces
 			}
 		}
 
-		private Transform CreateTile( Vector3 position )
+		private Tile CreateTile( Vector3 position )
 		{
 			var newTile = _tileFactory.Create( _tileProvider.GetRandomTile() );
 
@@ -74,23 +74,23 @@ namespace MeltingChamber.Gameplay.LevelPieces
 			newTile.transform.SetPositionAndRotation( position, Quaternion.identity );
 			newTile.transform.localScale = Vector3.one * _cellSize;
 
-			return newTile.transform;
+			return newTile;
 		}
 
-		public void AddTile( Transform tile )
+		public void AddTile( Tile tile )
 		{
 			_tiles.Add( tile );
 		}
 
-		public void RemoveTile( Transform tile )
+		public void RemoveTile( Tile tile )
 		{
 			if ( _tiles.Remove( tile ) )
 			{
-				Destroy( tile.gameObject );
+				tile.Dissolve();
 			}
 		}
 
-		public Transform GetTile( int index )
+		public Tile GetTile( int index )
 		{
 			return _tiles[index];
 		}
