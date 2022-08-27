@@ -23,6 +23,10 @@ namespace MeltingChamber.Gameplay.Player
 		public int Deposit()
 		{
 			int depositAmount = _fillCount;
+			if ( depositAmount <= 0 )
+			{
+				return 0;
+			}
 
 			_fillCount = 0;
 			_bucketRenderer.Deposit();
