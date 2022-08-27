@@ -133,6 +133,8 @@ GameObject:
   m_Component:
   - component: {fileID: 88844098}
   - component: {fileID: 88844099}
+  - component: {fileID: 88844101}
+  - component: {fileID: 88844100}
   m_Layer: 0
   m_Name: Tiles
   m_TagString: Untagged
@@ -168,10 +170,53 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tilePrefabs:
-  - {fileID: 3697460199267750880, guid: c6db819983ec5c846b6bd1f58d3803d8, type: 3}
-  - {fileID: 8473241140564977477, guid: 22c243249dfa5cc4a85579b95b964b12, type: 3}
-  - {fileID: 1176674849464863983, guid: c178aca85102a6644b04bce8a5938a05, type: 3}
-  - {fileID: -5351210523127098579, guid: 33e4ad9adf8dade449ba3629395a5492, type: 3}
+  - {fileID: 337140376223996450, guid: ab214336029b75f41aa9566010dc7526, type: 3}
+  - {fileID: 6874676589504301451, guid: 2528d70e3af8c7944b5a9d33f549c373, type: 3}
+  - {fileID: 431576608673117669, guid: b9e133d1bc0f3044a9dd7f548ed605b3, type: 3}
+  - {fileID: 2700716591986202186, guid: fa22ab5d3081ce1448bb03601fae06a2, type: 3}
+--- !u!66 &88844100
+CompositeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88844097}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_GeometryType: 0
+  m_GenerationType: 0
+  m_EdgeRadius: 0
+  m_ColliderPaths: []
+  m_CompositePaths:
+    m_Paths: []
+  m_VertexDistance: 0.0005
+  m_OffsetDistance: 0.00005
+--- !u!50 &88844101
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88844097}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &175720525
 GameObject:
   m_ObjectHideFlags: 0
@@ -1656,7 +1701,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1301479271
 Transform:
   m_ObjectHideFlags: 0
