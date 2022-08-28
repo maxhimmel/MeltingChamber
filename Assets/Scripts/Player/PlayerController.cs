@@ -133,6 +133,8 @@ namespace MeltingChamber.Gameplay.Player
 
 				if ( _input.GetButtonDown( Action.Dash ) && !_reflector.enabled )
 				{
+					_animController.Dash();
+
 					_sludgeBucket.enabled = true;
 					await _dashController.Dash( _directedMoveInput );
 					_sludgeBucket.enabled = false;

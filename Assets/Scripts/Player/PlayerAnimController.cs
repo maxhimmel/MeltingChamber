@@ -8,6 +8,7 @@ namespace MeltingChamber.Gameplay.Player
 		private readonly SpriteRenderer _renderer;
 
 		private readonly int _isMovingId = Animator.StringToHash( "IsMoving" );
+		private readonly int _dashId = Animator.StringToHash( "Dash" );
 
 		public PlayerAnimController( Animator animator )
 		{
@@ -24,6 +25,11 @@ namespace MeltingChamber.Gameplay.Player
 		{
 			bool isFacingLeft = Vector2.Dot( direction, Vector2.left ) > 0;
 			_renderer.flipX = isFacingLeft;
+		}
+
+		public void Dash()
+		{
+			_animator.SetTrigger( _dashId );
 		}
     }
 }
