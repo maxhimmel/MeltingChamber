@@ -1,15 +1,14 @@
 using System.Collections;
-using MeltingChamber.Gameplay.Movement;
+using System.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
-namespace MeltingChamber.Gameplay.Player
+namespace MeltingChamber.Gameplay
 {
     public class DamageHandler : MonoBehaviour
     {
         public bool IsStunned => _damageRoutine != null;
 
-        [SerializeField] private float _knockbackForce = 5;
         [SerializeField] private float _duration = 0.25f;
 
 		private Rigidbody2D _body;
@@ -21,22 +20,26 @@ namespace MeltingChamber.Gameplay.Player
             _body = body;
 		}
 
-        public void TakeDamage( Transform dmgSource )
+        public async Task TakeDamage( DamagePayload payload )
 		{
             if ( IsStunned )
 			{
                 return;
 			}
 
-            _damageRoutine = StartCoroutine( HandleDamage( dmgSource ) );
+            _damageRoutine = StartCoroutine( HandleDamage( payload ) );
+
+            while ( IsStunned )
+			{
+                await Task.Yield();
+			}
 		}
 
-        private IEnumerator HandleDamage( Transform dmgSource )
+        private IEnumerator HandleDamage( DamagePayload payload )
 		{
             yield return new WaitForFixedUpdate();
 
-            Vector2 knockbackDir = (transform.position - dmgSource.position).normalized;
-            _body.velocity = knockbackDir * _knockbackForce;
+            _body.velocity = payload.GetKnockbackVelocity( transform );
 
             float timer = 0;
             while ( timer < 1 )
