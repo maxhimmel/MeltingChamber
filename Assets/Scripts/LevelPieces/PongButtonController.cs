@@ -51,6 +51,7 @@ namespace MeltingChamber.Gameplay.LevelPieces
 			if ( sender is PongButton button )
 			{
 				_dissolver.ResetCountdown();
+				button.enabled = false;
 			}
 		}
 
