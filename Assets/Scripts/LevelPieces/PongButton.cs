@@ -10,14 +10,17 @@ namespace MeltingChamber.Gameplay.LevelPieces
 		public event EventHandler Triggered;
 
 		private IToggler _renderToggler;
+		private Rigidbody2D _body;
 
 		private void OnEnable()
 		{
+			_body.simulated = true;
 			_renderToggler.Enable();
 		}
 
 		private void OnDisable()
 		{
+			_body.simulated = false;
 			_renderToggler.Disable();
 		}
 
@@ -38,6 +41,8 @@ namespace MeltingChamber.Gameplay.LevelPieces
 
 		private void Awake()
 		{
+			_body = GetComponent<Rigidbody2D>();
+
 			_renderToggler = GetComponentInChildren<IToggler>();
 			_renderToggler.Init();
 		}
