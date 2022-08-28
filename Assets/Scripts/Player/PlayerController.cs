@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Threading.Tasks;
 using MeltingChamber.Gameplay.Movement;
 using MeltingChamber.ReConsts;
 using UnityEngine;
@@ -15,6 +17,7 @@ namespace MeltingChamber.Gameplay.Player
 		private Reflector _reflector;
 		private DamageHandler _damageHandler;
 		private SludgeBucket _sludgeBucket;
+		private Collider2D _collider;
 
 		private Vector2 _directedAimInput = Vector2.up;
 		private Vector2 _directedMoveInput = Vector2.right;
@@ -26,7 +29,8 @@ namespace MeltingChamber.Gameplay.Player
 			DashController dashController,
 			Reflector reflector,
 			DamageHandler damageHandler,
-			SludgeBucket sludgeBucket )
+			SludgeBucket sludgeBucket,
+			Collider2D collider )
 		{
 			_input = input;
 			_motor = motor;
@@ -34,22 +38,44 @@ namespace MeltingChamber.Gameplay.Player
 			_reflector = reflector;
 			_damageHandler = damageHandler;
 			_sludgeBucket = sludgeBucket;
+			_collider = collider;
 
 			_initialMoveSpeed = _motor.MaxSpeed;
 		}
 
-		public bool TakeDamage( Transform dmgSource )
+		public bool TakeDamage( DamagePayload payload )
 		{
-			if ( _dashController.IsDashing )
+			if ( !CanTakeDamage() )
 			{
 				return false;
 			}
 
 			_motor.ClearMovement();
-			_damageHandler.TakeDamage( dmgSource );
 			SetReflectorActive( false );
 
+			ApplyDamage( payload );
+
 			return true;
+		}
+
+		private bool CanTakeDamage()
+		{
+			return !_dashController.IsDashing && !_damageHandler.IsStunned;
+		}
+
+		private async void ApplyDamage( DamagePayload payload )
+		{
+			if ( payload.ToggleCollider )
+			{
+				_collider.enabled = false;
+			}
+
+			await _damageHandler.TakeDamage( payload );
+
+			if ( payload.ToggleCollider )
+			{
+				_collider.enabled = true;
+			}
 		}
 
 		public int DepositSludge()

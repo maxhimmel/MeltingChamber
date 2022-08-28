@@ -7,6 +7,7 @@ namespace MeltingChamber.Gameplay.LevelPieces
     public class Sludge : MonoBehaviour
     {
         [SerializeField] private float _lifetime = 2.5f;
+		[SerializeField] private DamageDatum _damageData = new DamageDatum();
 
         private void Start()
         {
@@ -44,7 +45,8 @@ namespace MeltingChamber.Gameplay.LevelPieces
 				return;
 			}
 
-			player.TakeDamage( transform );
+			var dmgPayload = _damageData.CreatePayload( transform );
+			player.TakeDamage( dmgPayload );
 		}
 	}
 }
