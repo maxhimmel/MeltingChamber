@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3222978734234964276}
   - component: {fileID: 3222978734234964274}
   - component: {fileID: 3222978734234964275}
+  - component: {fileID: 6698139143716258227}
   m_Layer: 8
   m_Name: Button
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3222978734234964277}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.16, y: 9.09, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -68,6 +69,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &6698139143716258227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3222978734234964277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4069c1e406aba8a42b28d23f81abaf91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3222978734300251663
 GameObject:
   m_ObjectHideFlags: 0
@@ -78,7 +91,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3222978734300251662}
   - component: {fileID: 3222978734300251661}
-  - component: {fileID: 6983536910204689063}
+  - component: {fileID: 7433032482775318547}
+  - component: {fileID: 2251883539116533607}
   m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
@@ -94,7 +108,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3222978734300251663}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -121,7 +135,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 1054f4fcf5d74de4eb0f102851f5b938, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -142,8 +156,8 @@ SpriteRenderer:
   m_SortingLayerID: 2076125041
   m_SortingLayer: 4
   m_SortingOrder: 1
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0.27509287, b: 0.20392156, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 0bb2085fad95eaa4db28926b32b22c49, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -153,7 +167,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6983536910204689063
+--- !u!114 &7433032482775318547
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,11 +176,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 3222978734300251663}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 729ebef4496ecee4cb6a3c1d1d01bb5a, type: 3}
+  m_Script: {fileID: 11500000, guid: b68054fe970c4ba45b81208f5ac7ec63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enabled: {r: 1, g: 0.27450982, b: 0.20392159, a: 1}
-  _disabled: {r: 0.404, g: 0.11397353, b: 0.08575473, a: 1}
+  _enabled: {fileID: 21300000, guid: 0bb2085fad95eaa4db28926b32b22c49, type: 3}
+  _disabled: {fileID: 21300000, guid: 58cd1fff49513ed4d810398c15af17ef, type: 3}
+--- !u!114 &2251883539116533607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3222978734300251663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e29c4f8ee651afb48853d69559950c18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enabled: {fileID: 2100000, guid: 1054f4fcf5d74de4eb0f102851f5b938, type: 2}
+  _disabled: {fileID: 2100000, guid: c056aa317373f3d4c942178c840a7866, type: 2}
 --- !u!1 &3222978734931976003
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,6 +240,6 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.5}
   serializedVersion: 2
   m_Radius: 0.5
