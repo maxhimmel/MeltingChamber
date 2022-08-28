@@ -42,6 +42,7 @@ namespace MeltingChamber.Gameplay.LevelPieces
 
 			newButton.transform.SetParent( transform );
 			newButton.transform.position = position;
+			newButton.transform.rotation = Quaternion.LookRotation( Vector3.forward, transform.position - position );
 
 			return newButton;
 		}
