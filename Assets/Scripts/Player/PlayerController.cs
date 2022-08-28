@@ -18,6 +18,7 @@ namespace MeltingChamber.Gameplay.Player
 		private DamageHandler _damageHandler;
 		private SludgeBucket _sludgeBucket;
 		private Collider2D _collider;
+		private PlayerAnimController _animController;
 
 		private Vector2 _directedAimInput = Vector2.up;
 		private Vector2 _directedMoveInput = Vector2.right;
@@ -30,7 +31,8 @@ namespace MeltingChamber.Gameplay.Player
 			Reflector reflector,
 			DamageHandler damageHandler,
 			SludgeBucket sludgeBucket,
-			Collider2D collider )
+			Collider2D collider, 
+			PlayerAnimController animController )
 		{
 			_input = input;
 			_motor = motor;
@@ -39,6 +41,7 @@ namespace MeltingChamber.Gameplay.Player
 			_damageHandler = damageHandler;
 			_sludgeBucket = sludgeBucket;
 			_collider = collider;
+			_animController = animController;
 
 			_initialMoveSpeed = _motor.MaxSpeed;
 		}
@@ -92,6 +95,7 @@ namespace MeltingChamber.Gameplay.Player
 
 			HandleReflector();
 			HandleMovement();
+			HandleAnimations();
 		}
 
 		private void HandleReflector()
@@ -133,6 +137,17 @@ namespace MeltingChamber.Gameplay.Player
 					await _dashController.Dash( _directedMoveInput );
 					_sludgeBucket.enabled = false;
 				}
+			}
+		}
+
+		private void HandleAnimations()
+		{
+			bool isMoving = _motor.Velocity.sqrMagnitude > 0.1f;
+			_animController.ToggleMovement( isMoving );
+
+			if ( isMoving )
+			{
+				_animController.SetFacing( _motor.Velocity );
 			}
 		}
 
