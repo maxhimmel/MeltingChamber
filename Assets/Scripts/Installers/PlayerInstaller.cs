@@ -1,6 +1,7 @@
 using MeltingChamber.Gameplay;
 using MeltingChamber.Gameplay.Movement;
 using MeltingChamber.Gameplay.Player;
+using UnityEngine;
 
 namespace MeltingChamber.Installers
 {
@@ -16,6 +17,9 @@ namespace MeltingChamber.Installers
 			Container.Bind<DamageHandler>().FromMethod( GetComponentInChildren<DamageHandler> ).AsSingle();
 			Container.Bind<SludgeBucket>().FromMethod( GetComponentInChildren<SludgeBucket> ).AsSingle();
 			Container.Bind<IBucketRenderer>().FromMethod( GetComponentInChildren<IBucketRenderer> ).AsSingle();
+
+			Container.Bind<Animator>().FromMethod( GetComponentInChildren<Animator> ).AsSingle();
+			Container.Bind<PlayerAnimController>().AsSingle();
 		}
 	}
 }
