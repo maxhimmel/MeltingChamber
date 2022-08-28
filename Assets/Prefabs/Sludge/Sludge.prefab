@@ -48,6 +48,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lifetime: 2.5
+  _damageData:
+    _knockback: 15
+    _toggleCollider: 0
 --- !u!50 &4304318717819407816
 Rigidbody2D:
   serializedVersion: 4
