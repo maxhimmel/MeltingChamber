@@ -7,6 +7,7 @@ namespace MeltingChamber.Gameplay.Movement
     {
 		public float MaxSpeed => _maxSpeed;
 		public float Acceleration => _acceleration;
+		public Vector2 Velocity => _body.velocity;
 
 		[SerializeField] private float _maxSpeed = 10;
 		[SerializeField] private float _acceleration = 10;
