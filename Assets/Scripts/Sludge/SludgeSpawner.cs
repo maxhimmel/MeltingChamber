@@ -69,7 +69,7 @@ namespace MeltingChamber.Gameplay.LevelPieces
 
 		private void Awake()
 		{
-			_spawnAreas = GetComponentsInChildren<BoxCollider2D>();
+			_spawnAreas = GetComponentsInChildren<BoxCollider2D>( includeInactive: false );
 		}
 	}
 }
