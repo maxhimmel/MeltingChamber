@@ -10,6 +10,7 @@ namespace MeltingChamber.Framework
         [SerializeField] private RectTransform _panel;
 
         [Space]
+        [SerializeField] private bool _startOpened = true;
         [SerializeField, Min( 0 )] private float _duration = 1;
 
         [Space]
@@ -48,5 +49,13 @@ namespace MeltingChamber.Framework
 		{
             _panel.anchoredPosition = newPos;
 		}
-    }
+
+		private void Awake()
+		{
+			if ( _startOpened )
+			{
+                SetPanelPosition( _openPosition );
+			}
+		}
+	}
 }
