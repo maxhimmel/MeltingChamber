@@ -7,6 +7,8 @@ namespace MeltingChamber.Installers
 {
     public class PlayerInstaller : ActorInstaller
     {
+		[SerializeField] private FollowMotor _slimeBucketFollowerPrefab;
+
 		public override void InstallBindings()
 		{
 			base.InstallBindings();
@@ -20,6 +22,11 @@ namespace MeltingChamber.Installers
 
 			Container.Bind<Animator>().FromMethod( GetComponentInChildren<Animator> ).AsSingle();
 			Container.Bind<PlayerAnimController>().AsSingle();
+
+			Container.BindFactory<FollowMotor, FollowMotor.Factory>()
+				.FromComponentInNewPrefab( _slimeBucketFollowerPrefab )
+				.UnderTransform( context => null )
+				.AsSingle();
 		}
 	}
 }
