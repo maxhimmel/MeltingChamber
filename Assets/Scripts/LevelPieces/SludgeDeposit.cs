@@ -6,8 +6,16 @@ namespace MeltingChamber.Gameplay.LevelPieces
 {
     public class SludgeDeposit : MonoBehaviour
     {
+		private readonly int _depositId = Animator.StringToHash( "Deposit" );
+		private readonly int _spawnId = Animator.StringToHash( "Spawn" );
+
 		[SerializeField] private int _capacity = 3;
+		[SerializeField] private Transform _depositOrigin;
 		[SerializeField] private Transform _pongSpawnOrigin;
+
+		[Header( "Animations" )]
+		[SerializeField] private Animator _depositAnimController;
+		[SerializeField] private Animator _pongSpawnAnimController;
 
 		private PongBall.Factory _pongFactory;
 		private int _fillCount;
@@ -32,12 +40,21 @@ namespace MeltingChamber.Gameplay.LevelPieces
 				return;
 			}
 
-			int depositAmount = player.DepositSludge();
+			int depositAmount = player.DepositSludge( _depositOrigin );
+			if ( depositAmount <= 0 )
+			{
+				return;
+			}
+
 			_fillCount += depositAmount;
+
+			_depositAnimController.SetTrigger( _depositId );
 
 			if ( _fillCount >= _capacity )
 			{
 				_fillCount = 0;
+
+				_pongSpawnAnimController.SetTrigger( _spawnId );
 
 				PongBall pongBall = _pongFactory.Create();
 				pongBall.transform.SetPositionAndRotation( _pongSpawnOrigin.position, _pongSpawnOrigin.rotation );
