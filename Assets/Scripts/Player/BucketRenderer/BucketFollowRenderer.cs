@@ -39,7 +39,7 @@ namespace MeltingChamber.Gameplay
 			}
 		}
 
-		public void Deposit()
+		public void Deposit( Transform receptacle )
 		{
 			foreach ( var follower in _followers )
 			{

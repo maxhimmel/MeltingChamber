@@ -22,7 +22,7 @@ namespace MeltingChamber.Gameplay
 			_textMesh.text = $"{num}";
 		}
 
-		public void Deposit()
+		public void Deposit( Transform receptacle )
 		{
 			CancelCountdown();
 			_depositRoutine = StartCoroutine( Countdown( _currentFillCount, _countdownDuration ) );

@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace MeltingChamber.Gameplay
 {
     public interface IBucketRenderer
@@ -6,6 +8,6 @@ namespace MeltingChamber.Gameplay
         void Hide();
 
         void Fill( float percentage, int max );
-        void Deposit();
+        void Deposit( Transform receptacle );
     }
 }
