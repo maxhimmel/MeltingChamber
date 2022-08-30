@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Threading.Tasks;
+using MeltingChamber.Framework;
 using MeltingChamber.Gameplay.Movement;
 using MeltingChamber.ReConsts;
 using UnityEngine;
@@ -19,6 +20,7 @@ namespace MeltingChamber.Gameplay.Player
 		private SludgeBucket _sludgeBucket;
 		private Collider2D _collider;
 		private PlayerAnimController _animController;
+		private LevelManager _levelManager;
 
 		private Vector2 _directedAimInput = Vector2.up;
 		private Vector2 _directedMoveInput = Vector2.right;
@@ -32,7 +34,8 @@ namespace MeltingChamber.Gameplay.Player
 			DamageHandler damageHandler,
 			SludgeBucket sludgeBucket,
 			Collider2D collider, 
-			PlayerAnimController animController )
+			PlayerAnimController animController,
+			LevelManager levelManager )
 		{
 			_input = input;
 			_motor = motor;
@@ -42,6 +45,7 @@ namespace MeltingChamber.Gameplay.Player
 			_sludgeBucket = sludgeBucket;
 			_collider = collider;
 			_animController = animController;
+			_levelManager = levelManager;
 
 			_initialMoveSpeed = _motor.MaxSpeed;
 		}
@@ -92,6 +96,11 @@ namespace MeltingChamber.Gameplay.Player
 
 		private void Update()
 		{
+			if ( HandlePausing() )
+			{
+				return;
+			}
+
 			if ( _damageHandler.IsStunned )
 			{
 				return;
@@ -100,6 +109,16 @@ namespace MeltingChamber.Gameplay.Player
 			HandleReflector();
 			HandleMovement();
 			HandleAnimations();
+		}
+
+		private bool HandlePausing()
+		{
+			if ( _input.GetButtonDown( Action.Pause ) )
+			{
+				_levelManager.TogglePauseState();
+			}
+
+			return _levelManager.IsPaused;
 		}
 
 		private void HandleReflector()
