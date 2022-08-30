@@ -73,7 +73,11 @@ namespace MeltingChamber.Gameplay.Player
 				_collider.enabled = false;
 			}
 
+			_animController.SetStunned( true );
+
 			await _damageHandler.TakeDamage( payload );
+
+			_animController.SetStunned( false );
 
 			if ( payload.ToggleCollider )
 			{

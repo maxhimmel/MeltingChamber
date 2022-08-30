@@ -8,6 +8,7 @@ namespace MeltingChamber.Gameplay.Player
 		private readonly SpriteRenderer _renderer;
 
 		private readonly int _isMovingId = Animator.StringToHash( "IsMoving" );
+		private readonly int _isStunnedId = Animator.StringToHash( "IsStunned" );
 		private readonly int _dashId = Animator.StringToHash( "Dash" );
 
 		public PlayerAnimController( Animator animator )
@@ -30,6 +31,11 @@ namespace MeltingChamber.Gameplay.Player
 		public void Dash()
 		{
 			_animator.SetTrigger( _dashId );
+		}
+
+		public void SetStunned( bool isStunned )
+		{
+			_animator.SetBool( _isStunnedId, isStunned );
 		}
     }
 }
