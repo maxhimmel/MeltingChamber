@@ -1,17 +1,28 @@
 using System.Threading.Tasks;
+using MeltingChamber.Utility;
 
 namespace MeltingChamber.Framework
 {
     public class LevelManager
     {
-        private LevelLoader _levelLoader;
-		private ITransitionController _transitionController;
+        public event System.Action Paused;
+        public event System.Action Resumed;
+
+        public bool IsPaused { get; private set; }
+
+        private readonly LevelLoader _levelLoader;
+		private readonly ITransitionController _transitionController;
+		private readonly TimeController _timeController;
 
 		public LevelManager( LevelLoader levelLoader,
-            ITransitionController transitionController )
+            ITransitionController transitionController,
+            TimeController timeController )
 		{
+            IsPaused = false;
+
             _levelLoader = levelLoader;
             _transitionController = transitionController;
+			_timeController = timeController;
 		}
 
         public async Task LoadNextLevel()
@@ -28,5 +39,33 @@ namespace MeltingChamber.Framework
 
             _levelLoader.Load( nextLevel );
 		}
+
+        public void TogglePauseState()
+		{
+			if ( IsPaused )
+			{
+				Resume();
+			}
+            else
+			{
+                Pause();
+			}
+		}
+
+		public void Pause()
+		{
+            _timeController.SetScale( 0 );
+
+            IsPaused = true;
+            Paused?.Invoke();
+		}
+
+        public void Resume()
+        {
+            _timeController.SetScale( 1 );
+
+            IsPaused = false;
+            Resumed?.Invoke();
+        }
     }
 }
