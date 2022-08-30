@@ -89,9 +89,9 @@ namespace MeltingChamber.Gameplay.Player
 			}
 		}
 
-		public int DepositSludge()
+		public int DepositSludge( Transform receptacle )
 		{
-			return _sludgeBucket.Deposit();
+			return _sludgeBucket.Deposit( receptacle );
 		}
 
 		private void Update()
