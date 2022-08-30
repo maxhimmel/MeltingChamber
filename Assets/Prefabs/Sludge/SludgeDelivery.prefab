@@ -29,14 +29,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-<<<<<<< Updated upstream
-  - {fileID: 4200907508920712418}
-=======
-  - {fileID: 821505270189335052}
-  - {fileID: 821505269181886844}
->>>>>>> Stashed changes
-  - {fileID: 4282354177770052676}
   - {fileID: 571153943940287349}
+  - {fileID: 4282354177770052676}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -75,11 +69,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2543139770770041204, guid: 2e6d8875a3892d64380f36b9b1d4e131, type: 3}
       propertyPath: m_RootOrder
-<<<<<<< Updated upstream
       value: 1
-=======
-      value: 2
->>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: 2543139770770041204, guid: 2e6d8875a3892d64380f36b9b1d4e131, type: 3}
       propertyPath: m_LocalPosition.x
@@ -149,11 +139,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2716072796296483943, guid: 66e807355fa3f1f459b9b54b48ae5213, type: 3}
       propertyPath: m_RootOrder
-<<<<<<< Updated upstream
       value: 0
-=======
-      value: 3
->>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: 2716072796296483943, guid: 66e807355fa3f1f459b9b54b48ae5213, type: 3}
       propertyPath: m_LocalPosition.x
