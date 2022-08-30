@@ -20,7 +20,7 @@ namespace MeltingChamber.Gameplay.Player
 			_bucketRenderer = bucketRenderer;
 		}
 
-		public int Deposit()
+		public int Deposit( Transform receptacle )
 		{
 			int depositAmount = _fillCount;
 			if ( depositAmount <= 0 )
@@ -29,7 +29,7 @@ namespace MeltingChamber.Gameplay.Player
 			}
 
 			_fillCount = 0;
-			_bucketRenderer.Deposit();
+			_bucketRenderer.Deposit( receptacle );
 
 			return depositAmount;
 		}
