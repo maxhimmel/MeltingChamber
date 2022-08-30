@@ -1,7 +1,7 @@
 using Zenject;
 using Rewired;
 using MeltingChamber.Framework;
-using UnityEngine;
+using MeltingChamber.Utility;
 
 namespace MeltingChamber.Installers
 {
@@ -22,6 +22,9 @@ namespace MeltingChamber.Installers
 				.AsSingle();
 
 			Container.Bind<LevelManager>()
+				.AsSingle();
+
+			Container.Bind<TimeController>()
 				.AsSingle();
 		}
 
