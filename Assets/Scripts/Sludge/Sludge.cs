@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using MeltingChamber.Gameplay.Player;
 using UnityEngine;
 
@@ -10,9 +11,10 @@ namespace MeltingChamber.Gameplay.LevelPieces
 		[SerializeField] private DamageDatum _damageData = new DamageDatum();
 
 		[Header( "Animations" )]
+		[SerializeField] private float _sludgeAnimEndTime = 2.9f;
 		[SerializeField] private Transform _vfxContainer;
 
-		private ParticleSystem[] _vfx;
+		private List<ParticleSystem> _vfx;
 
         private void Start()
         {
@@ -22,44 +24,19 @@ namespace MeltingChamber.Gameplay.LevelPieces
 
 		private IEnumerator HandleSpawnVfx()
 		{
-			int randIdx = Random.Range( 0, _vfx.Length );
+			int randIdx = Random.Range( 0, _vfx.Count );
 
 			var vfx = _vfx[randIdx];
 			vfx.Play( true );
 
-			yield break;
+			float timer = 0;
+			while ( timer < _sludgeAnimEndTime )
+			{
+				timer += Time.deltaTime;
+				yield return null;
+			}
 
-			////// Wait a frame for an opportunity to let a particle spawn ...
-			////yield return null;
-
-			//while ( vfx.isPlaying )
-			//{
-			//	foreach ( Transform child in vfx.transform )
-			//	{
-			//		var childVfx = child.GetComponent<ParticleSystem>();
-			//		Debug.LogWarning( childVfx.name );
-			//		Debug.Log( childVfx.particleCount );
-			//		Debug.Log( childVfx.isEmitting );
-			//		Debug.Log( childVfx.IsAlive() );
-			//	}
-			//	yield return null;
-			//}
-
-			////int particleCount = 1;
-			////while ( particleCount > 0 )
-			////{
-			////	int particleSum = 0;
-			////	for ( int idx = 0; idx < vfx.subEmitters.subEmittersCount; ++idx )
-			////	{
-			////		var subVfx = vfx.subEmitters.GetSubEmitterSystem( idx );
-			////		particleSum += subVfx.particleCount;
-			////	}
-
-			////	particleCount = particleSum;
-			////	yield return null;
-			////}
-
-			//Debug.LogError( "DESPAWN" );
+			vfx.Pause( true );
 		}
 
         private IEnumerator UpdateLifetime()
@@ -68,7 +45,7 @@ namespace MeltingChamber.Gameplay.LevelPieces
             while ( timer < 1 )
 			{
                 timer += Time.deltaTime / _lifetime;
-                yield return null;
+                yield return new WaitForFixedUpdate();
 			}
 
 			CleanUp();
@@ -99,11 +76,16 @@ namespace MeltingChamber.Gameplay.LevelPieces
 
 		private void Awake()
 		{
-			_vfx = new ParticleSystem[_vfxContainer.childCount];
+			_vfx = new List<ParticleSystem>( _vfxContainer.childCount );
 			for ( int idx = 0; idx < _vfxContainer.childCount; ++idx )
 			{
 				var child = _vfxContainer.GetChild( idx );
-				_vfx[idx] = child.GetComponent<ParticleSystem>();
+				if ( !child.gameObject.activeInHierarchy )
+				{
+					continue;
+				}
+
+				_vfx.Add( child.GetComponent<ParticleSystem>() );
 			}
 		}
 	}
