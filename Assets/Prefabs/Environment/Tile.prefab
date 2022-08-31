@@ -221,8 +221,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf2d756a329af254d8a3797735f97467, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dissolveDuration: 1
-  _dissolveAnimSpeed: 0.065
+  _anticDuration: 1
+  _anticBlinkRate: 0.065
+  _dissolveDuration: 0.5
+  _dissolveShader: {fileID: -6465566751694194690, guid: 4d10a4afb556681478b757029ae56233, type: 3}
+  _dissolveParamName: _DissolveAmount
   _knockbackMask:
     serializedVersion: 2
     m_Bits: 8

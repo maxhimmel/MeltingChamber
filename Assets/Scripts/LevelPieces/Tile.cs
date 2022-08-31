@@ -9,17 +9,23 @@ namespace MeltingChamber.Gameplay.LevelPieces
     public class Tile : MonoBehaviour
     {
 		[Header( "Animation" )]
-        [SerializeField] private float _dissolveDuration = 0.5f;
-        [SerializeField] private float _dissolveAnimSpeed = 1;
+		[SerializeField] private float _anticDuration = 1;
+		[SerializeField] private float _anticBlinkRate = 0.065f;
+		[Space]
+		[SerializeField] private float _dissolveDuration = 0.5f;
+		[Space]
+		[SerializeField] private Shader _dissolveShader;
+		[SerializeField] private string _dissolveParamName = "_DissolveAmount";
 
 		[Header( "Collision" )]
 		[SerializeField] private LayerMask _knockbackMask = 0;
 		[SerializeField] private DamageDatum _damageData = new DamageDatum();
 
-		private IToggler _rendererToggler;
-		private BoxCollider2D _collider;
-
 		private static Collider2D[] _overlaps = new Collider2D[5];
+
+		private IToggler _rendererToggler;
+		private SpriteRenderer _renderer;
+		private BoxCollider2D _collider;
 
         public void Dissolve()
 		{
@@ -28,30 +34,49 @@ namespace MeltingChamber.Gameplay.LevelPieces
 
         private IEnumerator UpdateDissolve()
 		{
+			yield return PlayWarningAntic();
+			yield return PlayDissolveAntic();
+
+			Cleanup();
+		}
+
+		private IEnumerator PlayWarningAntic()
+		{
 			bool toggle = true;
-			float animTimer = 0;
-			float dissolveTimer = 0;
-
-			while ( dissolveTimer < 1 )
+			float blinkTimer = 0;
+			float warningAnticTimer = 0;
+			while ( warningAnticTimer < 1 )
 			{
-				dissolveTimer += Time.deltaTime / _dissolveDuration;
-				animTimer += Time.deltaTime / _dissolveAnimSpeed;
+				warningAnticTimer += Time.deltaTime / _anticDuration;
+				blinkTimer += Time.deltaTime / _anticBlinkRate;
 
-				if ( animTimer >= 1 )
+				if ( blinkTimer >= 1 )
 				{
-					animTimer = 0;
+					blinkTimer = 0;
 					toggle = !toggle;
 
-					System.Action toggleAction = toggle 
-						? _rendererToggler.Enable 
+					System.Action toggleAction = toggle
+						? _rendererToggler.Enable
 						: _rendererToggler.Disable;
 					toggleAction();
 				}
 
 				yield return new WaitForFixedUpdate();
 			}
+		}
 
-			Cleanup();
+		private IEnumerator PlayDissolveAntic()
+		{
+			_renderer.material = new Material( _dissolveShader );
+
+			float dissolveTimer = 0;
+			while ( dissolveTimer < 1 )
+			{
+				dissolveTimer += Time.deltaTime / _dissolveDuration;
+				_renderer.material.SetFloat( _dissolveParamName, dissolveTimer );
+
+				yield return new WaitForFixedUpdate();
+			}
 		}
 
 		private void Cleanup()
@@ -91,6 +116,8 @@ namespace MeltingChamber.Gameplay.LevelPieces
 
 		private void Awake()
 		{
+			_renderer = GetComponentInChildren<SpriteRenderer>();
+
 			_rendererToggler = GetComponentInChildren<IToggler>();
 			_rendererToggler.Init();
 
