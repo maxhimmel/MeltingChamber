@@ -40,16 +40,31 @@ namespace MeltingChamber.Gameplay
 			}
 		}
 
-		public Task Deposit( Transform receptacle )
+		public async Task Deposit( Transform receptacle )
 		{
+			List<Task> arrivals = new List<Task>();
+
 			foreach ( var follower in _followers )
 			{
-				Destroy( follower.gameObject );
+				follower.SetArrivalDistance( 0 );
+				follower.SetTarget( receptacle );
+
+				arrivals.Add( WaitForArrival( follower ) );
 			}
 
 			_followers.Clear();
 
-			return Task.CompletedTask;
+			await Task.WhenAll( arrivals );
+		}
+
+		private async Task WaitForArrival( FollowMotor follower )
+		{
+			while ( follower != null && follower.DistanceToTarget > 0.25f )
+			{
+				await Task.Yield();
+			}
+
+			follower.Cleanup();
 		}
 
 		public void Fill( float percentage, int max )
