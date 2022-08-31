@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 
@@ -22,10 +23,15 @@ namespace MeltingChamber.Gameplay
 			_textMesh.text = $"{num}";
 		}
 
-		public void Deposit( Transform receptacle )
+		public async Task Deposit( Transform receptacle )
 		{
 			CancelCountdown();
 			_depositRoutine = StartCoroutine( Countdown( _currentFillCount, _countdownDuration ) );
+
+			while ( _depositRoutine != null )
+			{
+				await Task.Yield();
+			}
 		}
 
 		private void CancelCountdown()

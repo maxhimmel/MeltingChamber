@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using MeltingChamber.Gameplay.LevelPieces;
 using UnityEngine;
 using Zenject;
@@ -20,7 +21,7 @@ namespace MeltingChamber.Gameplay.Player
 			_bucketRenderer = bucketRenderer;
 		}
 
-		public int Deposit( Transform receptacle )
+		public async Task<int> Deposit( Transform receptacle )
 		{
 			int depositAmount = _fillCount;
 			if ( depositAmount <= 0 )
@@ -29,7 +30,7 @@ namespace MeltingChamber.Gameplay.Player
 			}
 
 			_fillCount = 0;
-			_bucketRenderer.Deposit( receptacle );
+			await _bucketRenderer.Deposit( receptacle );
 
 			return depositAmount;
 		}

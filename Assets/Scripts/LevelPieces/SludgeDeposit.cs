@@ -26,7 +26,7 @@ namespace MeltingChamber.Gameplay.LevelPieces
 			_pongFactory = pongFactory;
 		}
 
-		private void OnTriggerEnter2D( Collider2D collision )
+		private async void OnTriggerEnter2D( Collider2D collision )
 		{
 			Rigidbody2D body = collision.attachedRigidbody;
 			if ( body == null )
@@ -40,7 +40,7 @@ namespace MeltingChamber.Gameplay.LevelPieces
 				return;
 			}
 
-			int depositAmount = player.DepositSludge( _depositOrigin );
+			int depositAmount = await player.DepositSludge( _depositOrigin );
 			if ( depositAmount <= 0 )
 			{
 				return;

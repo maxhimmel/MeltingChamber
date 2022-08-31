@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace MeltingChamber.Gameplay
@@ -8,6 +9,6 @@ namespace MeltingChamber.Gameplay
         void Hide();
 
         void Fill( float percentage, int max );
-        void Deposit( Transform receptacle );
+        Task Deposit( Transform receptacle );
     }
 }

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using MeltingChamber.Gameplay.Movement;
 using UnityEngine;
 using Zenject;
@@ -39,7 +40,7 @@ namespace MeltingChamber.Gameplay
 			}
 		}
 
-		public void Deposit( Transform receptacle )
+		public Task Deposit( Transform receptacle )
 		{
 			foreach ( var follower in _followers )
 			{
@@ -47,6 +48,8 @@ namespace MeltingChamber.Gameplay
 			}
 
 			_followers.Clear();
+
+			return Task.CompletedTask;
 		}
 
 		public void Fill( float percentage, int max )
