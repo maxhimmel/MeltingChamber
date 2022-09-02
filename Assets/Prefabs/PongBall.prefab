@@ -382,6 +382,42 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2908948969853110419}
     m_Modifications:
+    - target: {fileID: 89336971557322721, guid: 4b0dcb33ae399c143b34223f34fd1545, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7070982
+      objectReference: {fileID: 0}
+    - target: {fileID: 89336971557322721, guid: 4b0dcb33ae399c143b34223f34fd1545, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7070982
+      objectReference: {fileID: 0}
+    - target: {fileID: 89336971557322721, guid: 4b0dcb33ae399c143b34223f34fd1545, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.0034954215
+      objectReference: {fileID: 0}
+    - target: {fileID: 89336971557322721, guid: 4b0dcb33ae399c143b34223f34fd1545, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.0034954215
+      objectReference: {fileID: 0}
+    - target: {fileID: 89336971557322722, guid: 4b0dcb33ae399c143b34223f34fd1545, type: 3}
+      propertyPath: m_Intensity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 89336971557322722, guid: 4b0dcb33ae399c143b34223f34fd1545, type: 3}
+      propertyPath: m_PointLightOuterRadius
+      value: 1.8901976
+      objectReference: {fileID: 0}
+    - target: {fileID: 89336971557322722, guid: 4b0dcb33ae399c143b34223f34fd1545, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 89336971557322722, guid: 4b0dcb33ae399c143b34223f34fd1545, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.data[3]
+      value: -2037842723
+      objectReference: {fileID: 0}
+    - target: {fileID: 89336971557322722, guid: 4b0dcb33ae399c143b34223f34fd1545, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.data[4]
+      value: 2076125041
+      objectReference: {fileID: 0}
     - target: {fileID: 89336972270280744, guid: 4b0dcb33ae399c143b34223f34fd1545, type: 3}
       propertyPath: m_IsActive
       value: 1
